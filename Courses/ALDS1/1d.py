@@ -1,44 +1,29 @@
-import time
-import random
-import sys
-import bisect
-import array
-import re
-import collections
-import heapq
-import fractions
-import itertools
-import string
 import math
-
+import string
+import itertools
+import fractions
+import heapq
+import collections
+import re
+import array
+import bisect
+import sys
+import random
+import time
 inf = 10**9
 
 
-def isPrime(x):
-    if x == 2:
-        return True
-
-    if x < 2 or x % 2 == 0:
-        return False
-
-    for i in range(3, math.floor(math.sqrt(x))+1, 2):
-        if x % i == 0:
-            return False
-
-    return True
-
-
 def main():
-    count = 0
     n = int(input())
+    minv = int(input())
+    maxv = -inf
 
-    for i in range(n):
+    for i in range(n-1):
         x = int(input())
-        if isPrime(x):
-            count = count + 1
-            # print(x, "is prime number")
+        maxv = max(maxv, x-minv)
+        minv = min(minv, x)
 
-    print(count)
+    print(maxv)
 
 
 if __name__ == '__main__':
